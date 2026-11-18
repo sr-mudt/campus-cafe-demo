@@ -1,6 +1,6 @@
 // Generates all demo images at build time (so the repository stays small).
 //   src/assets/*.jpg          sources for the AFTER version (Astro optimises them)
-//   public/before/img/*.png   huge, unoptimised PNGs for the BEFORE version
+//   public/before/img/*.png   images for the BEFORE version
 // Images are illustrations drawn from code: no copyright issues.
 import sharp from 'sharp';
 import { mkdir, readFile, access } from 'node:fs/promises';
@@ -78,14 +78,14 @@ for (const [name, make] of Object.entries(motifs)) {
   await sharp(buf).jpeg({ quality: 88 }).toFile(out(`src/assets/${name}.jpg`));
   await sharp(buf).png({ compressionLevel: 9, palette: false }).toFile(out(`public/before/img/${name}.png`));
   if (name === 'latte') {
-    // Text baked into an image (BEFORE only)
+    // "today's special" image (BEFORE)
     await sharp(buf).resize(1800, 1200)
       .composite([{ input: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200">${paths(text.special)}</svg>`) }])
       .png().toFile(out('public/before/img/special.png'));
   }
   console.log(`[images] ${name}`);
 }
-// Contact details as an image (BEFORE only)
+// contact image (BEFORE)
 await sharp({ create: { width: 1000, height: 260, channels: 3, background: '#faf7f2' } })
   .composite([{ input: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="260">${paths(text.contact)}</svg>`) }])
   .png().toFile(out('public/before/img/contact.png'));

@@ -1,9 +1,4 @@
 ---
-/**
- * BEFORE version — built badly ON PURPOSE for teaching (CM-501, Session 1).
- * Every problem in here is deliberate and documented in the answer key
- * (teaching-material/session-01/demo-answer-key.md). Do not copy!
- */
 import { url } from '../data/cafe';
 const base = url('/before/');
 ---
@@ -11,9 +6,9 @@ const base = url('/before/');
 <head>
 <meta charset="utf-8">
 <title>Home</title>
-<!-- Fonts straight from Google: third-party request, visitor IP goes to Google before any consent -->
+<!-- fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@200;800&display=block">
-<!-- Libraries "just in case" — render-blocking, mostly unused -->
+<!-- libs -->
 <script is:inline src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.js"></script>
 <script is:inline src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.js"></script>
 <script is:inline src="https://cdn.jsdelivr.net/npm/moment@2.30.1/min/moment-with-locales.js"></script>
@@ -76,7 +71,7 @@ const base = url('/before/');
 </div>
 
 <script is:inline>
-  // "Analytics": runs immediately — long before anybody clicks the cookie banner
+  // analytics
   document.cookie = "_cc_uid=" + Math.random().toString(36).slice(2) + "; max-age=31536000; path=/";
   document.cookie = "_cc_seen=" + Date.now() + "; max-age=31536000; path=/";
   localStorage.setItem("cc_fingerprint", navigator.userAgent + "|" + screen.width + "x" + screen.height + "|" + navigator.language);
@@ -85,19 +80,19 @@ const base = url('/before/');
   var PAYMENT_API_KEY = "sk_live_DEMO_NOT_A_REAL_KEY_4f9a2c7e1b";
   var ADMIN_PASSWORD = "cafe2026";
 
-  // Ad banner pushes the whole page down after 1.5 s (layout shift)
+  // promo banner
   setTimeout(function () {
     document.getElementById("adslot").innerHTML = '<div class="ad">★ STUDENT DEAL: 2 COFFEES FOR 5 € ★</div>';
   }, 1500);
 
-  // Carousel: changes every 2.5 s, cannot be paused
+  // slider
   $(function () {
     var i = 0, imgs = $(".slider img");
     if (imgs.length) setInterval(function () { imgs.removeClass("on"); i = (i + 1) % imgs.length; $(imgs[i]).addClass("on"); }, 2500);
   });
 
   console.log("page loaded at " + moment().format());
-  trackPageView();  // function does not exist -> error in the console
+  trackPageView();
 </script>
 </body>
 </html>
