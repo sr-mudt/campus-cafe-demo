@@ -7,20 +7,21 @@ import { url } from '../data/cafe';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Campus Café · CM-501 teaching demo</title>
-    <meta name="description" content="The same fictional café website built twice: once badly, once well. A teaching demo for CM-501 Frontend Web Development." />
+    <title>Campus Café · SE-501 teaching demo</title>
+    <meta name="description" content="The same fictional café website built twice: once badly, once well. A teaching demo for SE-501 Frontend Web Development." />
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
   </head>
   <body class="flex min-h-screen items-center justify-center p-6">
     <main class="max-w-xl">
-      <p class="text-sm font-bold uppercase tracking-wide">CM-501 Frontend Web Development · teaching demo</p>
+      <p class="text-sm font-bold uppercase tracking-wide">SE-501 Frontend Web Development · teaching demo</p>
       <h1 class="mt-2 text-4xl font-bold">Campus Café</h1>
       <p class="mt-4 text-lg leading-relaxed">The same fictional café website, built twice. Same texts, same pictures, very different quality. Your job: find out what differs, and why it matters.</p>
       <ul class="mt-8 grid gap-4 sm:grid-cols-2">
         <li><a href={url('/before/')} class="block rounded-xl border-2 border-bean-900 p-6 text-center text-xl font-bold no-underline hover:bg-bean-100">Version “Before”</a></li>
         <li><a href={url('/after/')} class="block rounded-xl border-2 border-bean-900 p-6 text-center text-xl font-bold no-underline hover:bg-bean-100">Version “After”</a></li>
       </ul>
-      <p class="mt-8 text-sm">The “Before” version contains deliberate errors, including fake tracking and a fake secret in its source code. Look, don't touch: please do not submit its forms.</p>
+      <p class="mt-6 text-lg leading-relaxed"><strong>Café Garden:</strong> one page, four completely different designs, and not a single change in the HTML. <a href={url('/garden/')} class="font-bold">Open the Café Garden</a></p>
+      <p class="mt-8 text-sm">Everything here is fictional and harmless. Look, don't touch: please do not submit any forms.</p>
     </main>
   </body>
 </html>
