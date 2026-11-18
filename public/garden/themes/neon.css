@@ -1,0 +1,70 @@
+/* Café Garden · Theme 3 · "Neon Night"
+   Dark background, glowing card borders, monospace headings,
+   a two-column card grid and the information box on top. Same HTML. */
+:root {
+  --bg: #0d0b1e; --surface: #17142e; --text: #ece9ff; --soft: #b9b4e0;
+  --pink: #ff6fe0; --cyan: #57f0ff; --yellow: #ffe66d;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at 20% 0%, #2a1650 0, var(--bg) 45rem) var(--bg);
+  color: var(--text); font-family: var(--sans); line-height: 1.55; min-height: 100vh; }
+a { color: var(--cyan); }
+ul { list-style: none; margin: 0; padding: 0; }
+main :focus-visible, .site-header :focus-visible, .info :focus-visible, .site-footer :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem;
+  padding: 1rem 1.5rem; border-bottom: 1px solid #3a3570; }
+.logo { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--pink); text-decoration: none;
+  text-shadow: 0 0 12px rgb(255 111 224 / .7); }
+.nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; font-family: var(--mono); }
+.nav-list a { display: inline-block; padding: .4rem 0; color: var(--text); text-decoration: none; }
+.nav-list a[aria-current="page"] { color: var(--cyan); border-bottom: 2px solid var(--cyan); }
+
+/* Information first: the aside moves ABOVE main with grid-template-areas */
+.page { display: grid; grid-template-areas: "info" "main"; gap: 2rem; max-width: 68rem; margin: 0 auto; padding: 1.5rem; }
+main { grid-area: main; }
+.info { grid-area: info; }
+h1 { font-family: var(--mono); font-size: clamp(1.6rem, 1rem + 3vw, 3rem); line-height: 1.1; margin: 0 0 .5rem;
+  color: var(--text); text-shadow: 0 0 18px rgb(87 240 255 / .45); }
+.intro { color: var(--soft); max-width: 55ch; margin: 0; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.card { position: relative; display: flex; flex-direction: column; gap: .5rem; height: 100%; padding: 1.25rem;
+  background: var(--surface); border: 1px solid var(--cyan); border-radius: .5rem;
+  box-shadow: 0 0 0 1px rgb(87 240 255 / .25), 0 0 22px rgb(87 240 255 / .18); }
+.cards li:nth-child(even) .card { border-color: var(--pink); box-shadow: 0 0 0 1px rgb(255 111 224 / .25), 0 0 22px rgb(255 111 224 / .18); }
+.card h2 { font-family: var(--mono); font-size: 1.15rem; margin: 0; }
+.card p { margin: 0; }
+.date { font-family: var(--mono); color: var(--yellow); font-size: .9rem; }
+.card-footer { margin-top: auto; padding-top: .75rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: space-between; }
+.tag { font-family: var(--mono); font-size: .8rem; color: var(--bg); background: var(--cyan); padding: .15rem .5rem; border-radius: .25rem; }
+.button { display: inline-block; padding: .45rem .9rem; border: 1px solid var(--pink); border-radius: .35rem;
+  color: var(--text); text-decoration: none; font-weight: 600; background: rgb(255 111 224 / .12); }
+.button:hover { background: rgb(255 111 224 / .28); }
+
+.info { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); gap: .5rem 2rem;
+  padding: 1rem 1.25rem; border: 1px dashed #5a5490; border-radius: .5rem; background: rgb(23 20 46 / .8); }
+.info h2 { font-family: var(--mono); font-size: .95rem; color: var(--pink); margin: 0; }
+.hours { margin: 0; }
+.hours div { display: flex; justify-content: space-between; gap: 1rem; }
+.hours dt { color: var(--soft); }
+.hours dd { margin: 0; }
+address { font-style: normal; }
+
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem;
+  padding: 1.25rem 1.5rem; border-top: 1px solid #3a3570; color: var(--soft); font-family: var(--mono); font-size: .85rem; }
+.site-footer p { margin: 0; }
+.footer-links { display: flex; gap: 1.25rem; }
+
+/* From 40rem: the two info blocks side by side (headings in row 1, content in row 2) */
+@media (min-width: 40rem) {
+  .info { grid-template-columns: 1fr 1fr; }
+  .info h2 { grid-row: 1; }
+  .hours, address { grid-row: 2; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button { transition: background .2s; }
+}

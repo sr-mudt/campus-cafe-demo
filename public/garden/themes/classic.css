@@ -1,0 +1,62 @@
+/* Café Garden · Theme 1 · "Classic Café"
+   Warm colours, cards in a responsive grid, aside on the right from 60rem.
+   (= the model solution of Labs H–J in Session 5) */
+:root {
+  --color-text: #2b211b; --color-bg: #fbf7f2; --color-surface: #ffffff;
+  --color-brand: #3b2a20; --color-brand-contrast: #fbf7f2;
+  --color-accent: #9c4520; --color-muted: #f1e7dc;
+  --space-1: .25rem; --space-2: .5rem; --space-3: 1rem; --space-4: 1.5rem; --space-5: 2.5rem;
+  --radius: .75rem;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.5; }
+a { color: inherit; }
+main :focus-visible, .site-header :focus-visible, .site-footer :focus-visible, .info :focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+h1 { font-family: var(--font-display); font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3rem); line-height: 1.15; margin: 0 0 var(--space-2); }
+h2 { font-family: var(--font-display); font-size: 1.25rem; margin: 0; }
+
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-2) var(--space-4); padding: var(--space-3) var(--space-4);
+  background: var(--color-brand); color: var(--color-brand-contrast); }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; text-decoration: none; }
+.nav-list { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+.nav-list a { display: inline-block; padding: var(--space-2) 0; text-underline-offset: .3em; }
+.nav-list a[aria-current="page"] { text-decoration-thickness: 3px; }
+.site-header :focus-visible, .site-footer :focus-visible { outline-color: #ffd166; }
+
+.page { display: grid; grid-template-areas: "main" "info"; gap: var(--space-5);
+  max-width: 75rem; margin: 0 auto; padding: var(--space-4); }
+main { grid-area: main; }
+.intro { max-width: 60ch; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+  gap: var(--space-4); margin-top: var(--space-4); }
+.card { display: flex; flex-direction: column; gap: var(--space-2); height: 100%;
+  padding: var(--space-4); background: var(--color-surface); border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgb(0 0 0 / .12); }
+.card p { margin: 0; }
+.date { color: var(--color-accent); font-weight: 700; }
+.card-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-2); margin-top: auto; padding-top: var(--space-3); }
+.tag { background: var(--color-muted); padding: var(--space-1) var(--space-2); border-radius: 999px; font-size: .875rem; }
+.button { display: inline-block; background: var(--color-brand); color: var(--color-brand-contrast);
+  padding: var(--space-2) var(--space-3); border-radius: var(--space-2); text-decoration: none; font-weight: 600; }
+
+.info { grid-area: info; background: var(--color-muted); padding: var(--space-4); border-radius: var(--radius); align-self: start; }
+.info h2:not(:first-child) { margin-top: var(--space-4); }
+.hours { margin: var(--space-2) 0 0; }
+.hours div { display: flex; justify-content: space-between; gap: var(--space-3); border-bottom: 1px dotted #8a7a6d; }
+.hours dd { margin: 0; }
+address { font-style: normal; margin-top: var(--space-2); }
+
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2);
+  padding: var(--space-4); background: var(--color-brand); color: var(--color-brand-contrast); }
+.site-footer p { margin: 0; }
+.footer-links { display: flex; gap: var(--space-3); }
+
+@media (min-width: 60rem) {
+  .page { grid-template-columns: minmax(0, 1fr) 18rem; grid-template-areas: "main info"; }
+}

@@ -1,0 +1,63 @@
+/* Café Garden · Theme 2 · "Newspaper"
+   Serif type, a centred masthead, cards as columns with rules between them,
+   no shadows, no rounded corners. Same HTML. */
+:root {
+  --ink: #1a1a1a; --paper: #f4f1ea; --rule: #1a1a1a; --soft: #5a5a5a;
+  --font: Georgia, "Times New Roman", Times, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.55; }
+a { color: var(--ink); }
+ul { list-style: none; margin: 0; padding: 0; }
+main :focus-visible, .site-header :focus-visible, .info :focus-visible, .site-footer :focus-visible { outline: 3px solid #a10000; outline-offset: 2px; }
+
+/* Masthead */
+.site-header { max-width: 70rem; margin: 0 auto; padding: 1.5rem 1rem .5rem; text-align: center;
+  border-bottom: 4px double var(--rule); }
+.logo { display: block; font-size: clamp(2.2rem, 1.2rem + 5vw, 4.5rem); font-weight: 700; letter-spacing: -.02em;
+  text-decoration: none; line-height: 1; font-variant: small-caps; }
+.nav-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0; margin-top: .75rem;
+  border-top: 1px solid var(--rule); padding-top: .4rem; }
+.nav-list li + li::before { content: "·"; content: "·" / ""; padding: 0 .6rem; color: var(--soft); }
+.nav-list a { text-decoration: none; text-transform: uppercase; letter-spacing: .12em; font-size: .85rem; }
+.nav-list a[aria-current="page"] { text-decoration: underline; text-underline-offset: .3em; }
+
+.page { max-width: 70rem; margin: 0 auto; padding: 1rem; display: grid; gap: 1.5rem; }
+h1 { font-size: clamp(1.8rem, 1.1rem + 3vw, 3.2rem); line-height: 1.05; margin: .5rem 0; font-weight: 700; text-align: center; }
+.intro { font-style: italic; text-align: center; max-width: 45rem; margin: 0 auto 1rem; font-size: 1.1rem; }
+
+/* Cards as newspaper columns with vertical rules */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  border-top: 2px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.cards > li { padding: 1rem; border-bottom: 1px solid var(--rule); }
+.card { display: flex; flex-direction: column; height: 100%; gap: .4rem; }
+.card h2 { font-size: 1.35rem; line-height: 1.15; margin: 0; }
+.card p { margin: 0; }
+.date { font-variant: small-caps; letter-spacing: .05em; color: var(--soft); }
+.card-footer { margin-top: auto; padding-top: .6rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline; justify-content: space-between; }
+.tag { font-style: italic; color: var(--soft); }
+.tag::before { content: "— "; content: "— " / ""; }
+.button { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.button::after { content: " →"; content: " →" / ""; }
+
+.info { border: 1px solid var(--rule); padding: 1rem; background: transparent; }
+.info h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 .5rem;
+  border-bottom: 1px solid var(--rule); padding-bottom: .25rem; }
+.info h2:not(:first-child) { margin-top: 1rem; }
+.hours { margin: 0; }
+.hours div { display: flex; justify-content: space-between; gap: 1rem; }
+.hours dd { margin: 0; font-style: italic; }
+address { font-style: normal; }
+
+.site-footer { max-width: 70rem; margin: 1rem auto 0; padding: 1rem; border-top: 4px double var(--rule);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; font-size: .9rem; }
+.site-footer p { margin: 0; }
+.footer-links { display: flex; gap: 1rem; }
+
+/* From 56rem: news columns with rules, sidebar on the right */
+@media (min-width: 56rem) {
+  .page { grid-template-columns: minmax(0, 1fr) 16rem; align-items: start; }
+  .cards { grid-template-columns: repeat(2, 1fr); }          /* two news columns */
+  .cards > li:nth-child(even) { border-left: 1px solid var(--rule); }
+  .cards > li:nth-last-child(-n+2) { border-bottom: 0; }
+}

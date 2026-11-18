@@ -1,0 +1,58 @@
+/* Café Garden · Theme 4 · "Brutalist"
+   Black and white, thick borders, uppercase, a yellow accent,
+   cards as a numbered list and the information column on the LEFT. Same HTML. */
+:root { --ink: #000; --paper: #fff; --hi: #ffe500; --font: "Helvetica Neue", Arial, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); line-height: 1.4; }
+a { color: var(--ink); }
+ul { list-style: none; margin: 0; padding: 0; }
+main :focus-visible, .site-header :focus-visible, .info :focus-visible, .site-footer :focus-visible { outline: 4px solid #0047ff; outline-offset: 2px; }
+
+.site-header { display: grid; gap: .5rem; padding: 1rem; border-bottom: 6px solid var(--ink); }
+.logo { font-size: clamp(2rem, 1rem + 6vw, 5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.04em;
+  line-height: .9; text-decoration: none; }
+.nav-list { display: flex; flex-wrap: wrap; gap: 0; }
+.nav-list a { display: block; padding: .4rem .8rem; border: 3px solid var(--ink); margin: 0 -3px -3px 0;
+  text-decoration: none; font-weight: 700; text-transform: uppercase; }
+.nav-list a[aria-current="page"] { background: var(--ink); color: var(--paper); }
+
+/* Information on the LEFT: same HTML, other grid-template-areas */
+.page { display: grid; grid-template-areas: "main" "info"; }
+main { grid-area: main; padding: 1rem; }
+.info { grid-area: info; }
+h1 { font-size: clamp(1.8rem, 1rem + 4vw, 3.6rem); text-transform: uppercase; font-weight: 900; line-height: 1; margin: 0 0 .75rem; }
+.intro { font-size: 1.15rem; font-weight: 700; max-width: 40ch; margin: 0 0 1rem; background: var(--hi); display: inline; box-decoration-break: clone; padding: 0 .2rem; }
+
+.cards { counter-reset: event; margin-top: 1.5rem; border-top: 6px solid var(--ink); }
+.cards > li { counter-increment: event; border-bottom: 3px solid var(--ink); }
+.card { display: grid; grid-template-columns: 3rem 1fr; gap: .25rem 1rem; padding: 1rem 0; }
+.card::before { content: counter(event, decimal-leading-zero); grid-row: 1 / span 4; font-size: 2rem; font-weight: 900; }
+.card h2 { font-size: 1.5rem; text-transform: uppercase; margin: 0; }
+.card p { margin: 0; }
+.date { font-weight: 700; }
+.card-footer { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .5rem; }
+.tag { border: 3px solid var(--ink); padding: .1rem .5rem; font-weight: 700; text-transform: uppercase; font-size: .85rem; }
+.button { display: inline-block; background: var(--hi); border: 3px solid var(--ink); padding: .4rem .8rem;
+  font-weight: 900; text-transform: uppercase; text-decoration: none; box-shadow: 4px 4px 0 var(--ink); }
+.button:hover { box-shadow: 1px 1px 0 var(--ink); transform: translate(3px, 3px); }
+
+.info { border-top: 6px solid var(--ink); padding: 1rem; background: var(--ink); color: var(--paper); }
+.info a { color: var(--paper); }
+.info h2 { text-transform: uppercase; font-size: 1.1rem; margin: 0 0 .5rem; color: var(--hi); }
+.info h2:not(:first-child) { margin-top: 1.25rem; }
+.hours { margin: 0; }
+.hours div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--paper); padding: .2rem 0; }
+.hours dd { margin: 0; font-weight: 700; }
+address { font-style: normal; font-weight: 700; }
+.info :focus-visible { outline-color: var(--hi); }
+
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: 1rem;
+  border-top: 6px solid var(--ink); font-weight: 700; text-transform: uppercase; }
+.site-footer p { margin: 0; }
+.footer-links { display: flex; gap: 1rem; }
+
+@media (min-width: 50rem) {
+  .page { grid-template-columns: 18rem minmax(0, 1fr); grid-template-areas: "info main"; min-height: 70vh; }
+  .info { border-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .button:hover { transform: none; } }
