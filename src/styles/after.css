@@ -13,13 +13,22 @@
   --color-bean-800: #5a3d2b;
   --color-bean-100: #f4ede4;
   --color-bean-50: #faf7f2;
+  --color-crema-300: #ecd2a4;
   --color-crema-400: #e0b878;
   --color-berry-700: #9b2c2c;
+
+  /* Dark mode (Session 6): darker surfaces and a lighter muted text, same café character */
+  --color-night-950: #1b130e;
+  --color-night-900: #2a1d15;
+  --color-night-800: #4a3527;
+  --color-bean-300: #d8c4ad;
 }
 
 @layer base {
-  html { scroll-padding-top: 1rem; }
-  body { @apply bg-bean-50 text-bean-950 font-sans antialiased; }
-  :focus-visible { @apply outline-3 outline-offset-2 outline-berry-700; }
+  /* light and dark: also native form controls and scrollbars follow the user's setting */
+  html { scroll-padding-top: 1rem; color-scheme: light dark; }
+  body { @apply bg-bean-50 text-bean-950 font-sans antialiased dark:bg-night-950 dark:text-bean-50; }
+  /* the dark red focus ring has too little contrast on dark backgrounds: crema instead */
+  :focus-visible { @apply outline-3 outline-offset-2 outline-berry-700 dark:outline-crema-400; }
   a { @apply underline decoration-2 underline-offset-2; }
 }

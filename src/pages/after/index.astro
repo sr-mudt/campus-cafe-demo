@@ -16,14 +16,14 @@ const next = events[0];
         and the best croissants on campus.
       </p>
       <p class="mt-6 flex flex-wrap gap-3">
-        <a href={url('/after/menu/')} class="rounded-md bg-bean-900 px-5 py-3 font-bold text-bean-50 no-underline hover:bg-bean-800">See the menu</a>
-        <a href={url('/after/events/')} class="rounded-md border-2 border-bean-900 px-5 py-3 font-bold no-underline hover:bg-bean-100">Upcoming events</a>
+        <a href={url('/after/menu/')} class="rounded-md bg-bean-900 px-5 py-3 font-bold text-bean-50 no-underline hover:bg-bean-800 dark:bg-crema-400 dark:text-bean-950 dark:hover:bg-crema-300">See the menu</a>
+        <a href={url('/after/events/')} class="rounded-md border-2 border-bean-900 px-5 py-3 font-bold no-underline hover:bg-bean-100 dark:border-bean-100 dark:hover:bg-night-800">Upcoming events</a>
       </p>
     </div>
     <Image src={hero} alt="Two coffee cups on a wooden counter, warm lights in the background" width={1200} widths={[480, 800, 1200]} sizes="(min-width: 768px) 50vw, 100vw" loading="eager" fetchpriority="high" class="h-auto w-full rounded-xl" />
   </section>
 
-  <section aria-labelledby="special-heading" class="mt-12 rounded-xl bg-bean-100 p-6 sm:p-8">
+  <section aria-labelledby="special-heading" class="mt-12 rounded-xl bg-bean-100 p-6 sm:p-8 dark:bg-night-900">
     <h2 id="special-heading" class="text-sm font-bold uppercase tracking-wide">Today's special</h2>
     <p class="mt-2 text-3xl font-bold">{special.name} <span class="whitespace-nowrap">– {special.price}</span></p>
     <p class="mt-1">{special.note}.</p>

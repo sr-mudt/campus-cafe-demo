@@ -54,7 +54,7 @@ const csp = [
       Skip to main content
     </a>
 
-    <header class="bg-bean-900 text-bean-50">
+    <header class="bg-bean-900 text-bean-50 dark:bg-night-900">
       <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <a href={url('/after/')} class="text-2xl font-bold no-underline">
           {cafe.name}<span class="sr-only"> – home</span>
@@ -85,7 +85,7 @@ const csp = [
       <slot />
     </main>
 
-    <footer class="bg-bean-900 text-bean-50">
+    <footer class="bg-bean-900 text-bean-50 dark:bg-night-900">
       <div class="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:grid-cols-3 sm:px-6">
         <div>
           <h2 class="text-lg font-bold">{cafe.name}</h2>
@@ -111,7 +111,7 @@ const csp = [
           <p class="mt-4 text-sm">No cookies, no trackers, so no cookie banner.</p>
         </div>
       </div>
-      <p class="border-t border-bean-800 px-4 py-4 text-center text-sm">
+      <p class="border-t border-bean-800 dark:border-night-800 px-4 py-4 text-center text-sm">
         Fictional café · teaching demo for SE-501 Frontend Web Development
       </p>
     </footer>
